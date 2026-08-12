@@ -1,4 +1,4 @@
-export type PermissionMode = "normal" | "acceptEdits" | "plan";
+export type PermissionMode = "normal" | "acceptEdits" | "plan" | "bypassPermissions";
 export type BackdropId =
   | "transparent" | "slate" | "coral" | "indigo" | "black";
 export type AspectId =

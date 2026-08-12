@@ -17,6 +17,7 @@ export function SettingsPanel({ settings, setSettings }: Props) {
           <option value="normal">normal</option>
           <option value="acceptEdits">accept edits</option>
           <option value="plan">plan mode</option>
+          <option value="bypassPermissions">bypass permissions</option>
         </select>
       </label>
       <label>cwd

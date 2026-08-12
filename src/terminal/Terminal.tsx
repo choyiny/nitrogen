@@ -1,5 +1,5 @@
 import { Session } from "../state/types";
-import { permissionLabel } from "./theme";
+import { permissionLabel, permissionColor } from "./theme";
 import { BlockView } from "./blocks/BlockView";
 import "./terminal.css";
 
@@ -21,7 +21,7 @@ export function Terminal({ session }: { session: Session }) {
           marginTop: 14, color: "#78716c", fontSize: 12,
         }}
       >
-        <span style={{ color: label ? "#d97757" : "#78716c" }}>{label}</span>
+        <span style={{ color: permissionColor(settings.permissionMode) }}>{label}</span>
         <span>{settings.cwd} · {settings.model}</span>
       </div>
     </div>
