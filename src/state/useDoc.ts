@@ -1,16 +1,26 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Block, BlockType, FrameSettings, TerminalWindow } from "./types";
 import {
   addBlock, loadDoc, moveBlock, removeBlock, saveDoc, setActiveWindow,
   updateBlock, updateFrame, updateWindow,
 } from "./docStore";
+import { readDocFromHash, writeDocToHash } from "./shareLink";
 
 let counter = 0;
 const genId = () => `blk_${Date.now().toString(36)}_${counter++}`;
 
 export function useDoc() {
-  const [doc, setDoc] = useState(loadDoc);
+  const [doc, setDoc] = useState(() => readDocFromHash() ?? loadDoc());
   useEffect(() => saveDoc(doc), [doc]);
+
+  // Debounced URL-hash sync. Skip the initial mount so a fresh visit keeps a clean URL;
+  // once the user edits, the hash tracks the session.
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) { first.current = false; return; }
+    const t = setTimeout(() => writeDocToHash(doc), 250);
+    return () => clearTimeout(t);
+  }, [doc]);
 
   return {
     doc,
