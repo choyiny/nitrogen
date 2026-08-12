@@ -1,5 +1,6 @@
 import { Session } from "../state/types";
 import { permissionLabel } from "./theme";
+import { BlockView } from "./blocks/BlockView";
 import "./terminal.css";
 
 export function Terminal({ session }: { session: Session }) {
@@ -11,7 +12,7 @@ export function Terminal({ session }: { session: Session }) {
         {blocks.length === 0 && (
           <div style={{ color: "#78716c" }}>Add a block to get started…</div>
         )}
-        {/* Block rendering wired in Task 6 */}
+        {blocks.map((b) => <BlockView key={b.id} block={b} />)}
       </div>
       <div
         className="ccsg-statusbar"
