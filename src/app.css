@@ -44,3 +44,9 @@ body { margin: 0; background: #0f0f0f; color: #e7e5e4;
   border-radius: 6px; padding: 6px 10px; cursor: pointer;
 }
 .ccsg-tabs button.active { background: #262626; color: #e7e5e4; border-color: #d97757; }
+.ccsg-actions { display: flex; align-items: center; gap: 10px; }
+.ccsg-copy-btn {
+  background: #1c1917; color: #e7e5e4; border: 1px solid #3f3f3f;
+  border-radius: 8px; padding: 10px 16px; font-weight: 600; cursor: pointer;
+}
+.ccsg-copy-btn:hover { border-color: #d97757; }

@@ -14,3 +14,12 @@ test("Export button fires onExport", () => {
   fireEvent.click(screen.getByRole("button", { name: /export png/i }));
   expect(onExport).toHaveBeenCalled();
 });
+
+test("Copy link button copies the URL and shows Copied!", async () => {
+  const writeText = vi.fn().mockResolvedValue(undefined);
+  Object.assign(navigator, { clipboard: { writeText } });
+  render(<Header onExport={() => {}} />);
+  fireEvent.click(screen.getByRole("button", { name: /copy link/i }));
+  expect(writeText).toHaveBeenCalledWith(window.location.href);
+  expect(await screen.findByRole("button", { name: /copied/i })).toBeInTheDocument();
+});

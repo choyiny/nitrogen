@@ -1,6 +1,18 @@
+import { useState } from "react";
+
 type Props = { onExport: () => void };
 
 export function Header({ onExport }: Props) {
+  const [copied, setCopied] = useState(false);
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* clipboard unavailable (insecure context) */
+    }
+  };
   return (
     <header className="ccsg-header">
       <div className="ccsg-brand">
@@ -13,9 +25,14 @@ export function Header({ onExport }: Props) {
           <span className="ccsg-tagline">coding agent snippets</span>
         </div>
       </div>
-      <button className="ccsg-export-btn" onClick={onExport}>
-        Export PNG
-      </button>
+      <div className="ccsg-actions">
+        <button className="ccsg-copy-btn" onClick={copyLink}>
+          {copied ? "Copied!" : "Copy link"}
+        </button>
+        <button className="ccsg-export-btn" onClick={onExport}>
+          Export PNG
+        </button>
+      </div>
     </header>
   );
 }
