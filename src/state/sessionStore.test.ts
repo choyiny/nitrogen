@@ -1,6 +1,6 @@
 import {
   emptySession, addBlock, updateBlock, removeBlock, moveBlock,
-  updateSettings, loadSession, saveSession, STORAGE_KEY,
+  updateSettings, loadSession, saveSession, STORAGE_KEY, seedSession,
 } from "./sessionStore";
 
 test("addBlock appends a new block of the given type", () => {
@@ -47,4 +47,16 @@ test("save then load round-trips the session", () => {
 test("loadSession falls back to empty on invalid JSON", () => {
   localStorage.setItem(STORAGE_KEY, "{not json");
   expect(loadSession()).toEqual(emptySession());
+});
+
+test("seedSession has a mix of block types", () => {
+  const types = seedSession().blocks.map((b) => b.type);
+  expect(types).toContain("userPrompt");
+  expect(types).toContain("assistant");
+  expect(types.length).toBeGreaterThanOrEqual(3);
+});
+
+test("loadSession returns the seed when storage is empty", () => {
+  localStorage.clear();
+  expect(loadSession().blocks.length).toBeGreaterThan(0);
 });

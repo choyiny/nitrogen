@@ -8,6 +8,23 @@ export function emptySession(): Session {
   return { blocks: [], settings: defaultSettings() };
 }
 
+export function seedSession(): Session {
+  return {
+    settings: { ...defaultSettings(), permissionMode: "acceptEdits" },
+    blocks: [
+      { id: "s1", type: "userPrompt", text: "Add a dark mode toggle to the navbar" },
+      { id: "s2", type: "assistant", markdown: "I'll add a **theme toggle**. Plan:\n\n- Add a `useTheme` hook\n- Wire a button into the navbar" },
+      { id: "s3", type: "read", filepath: "src/Navbar.tsx", summary: "Read 48 lines" },
+      { id: "s4", type: "edit", filepath: "src/Navbar.tsx", lines: [
+        { kind: "context", text: "function Navbar() {" },
+        { kind: "add", text: "  const { theme, toggle } = useTheme();" },
+        { kind: "add", text: "  return <button onClick={toggle}>{theme}</button>;" },
+      ] },
+      { id: "s5", type: "bash", command: "npm test", output: "✓ 12 passed" },
+    ],
+  };
+}
+
 export function addBlock(s: Session, type: BlockType, id: string): Session {
   return { ...s, blocks: [...s.blocks, newBlock(type, id)] };
 }
@@ -48,7 +65,7 @@ export function saveSession(s: Session): void {
 export function loadSession(): Session {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return emptySession();
+    if (!raw) return seedSession();
     const parsed = JSON.parse(raw) as Session;
     if (!parsed || !Array.isArray(parsed.blocks) || !parsed.settings) {
       return emptySession();
