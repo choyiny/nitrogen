@@ -25,20 +25,6 @@ export const BLOCK_TYPES: BlockType[] = [
   "userPrompt", "assistant", "bash", "edit", "read", "bare",
 ];
 
-export interface SessionSettings {
-  permissionMode: PermissionMode;
-  cwd: string;
-  model: string;
-  backdrop: BackdropId;
-  padding: number;
-  aspect: AspectId;
-}
-
-export interface Session {
-  blocks: Block[];
-  settings: SessionSettings;
-}
-
 export function newBlock(type: BlockType, id: string): Block {
   switch (type) {
     case "userPrompt": return { id, type, text: "" };
@@ -48,17 +34,6 @@ export function newBlock(type: BlockType, id: string): Block {
     case "read": return { id, type, filepath: "", summary: "" };
     case "bare": return { id, type, text: "" };
   }
-}
-
-export function defaultSettings(): SessionSettings {
-  return {
-    permissionMode: "normal",
-    cwd: "~/project",
-    model: "claude-opus-4-8",
-    backdrop: "coral",
-    padding: 48,
-    aspect: "auto",
-  };
 }
 
 export interface TerminalWindow {

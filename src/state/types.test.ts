@@ -1,4 +1,4 @@
-import { newBlock, defaultSettings, BLOCK_TYPES, newWindow, defaultFrame } from "./types";
+import { newBlock, BLOCK_TYPES, newWindow, defaultFrame } from "./types";
 
 test("newBlock creates a userPrompt with empty text", () => {
   const b = newBlock("userPrompt", "id1");
@@ -14,10 +14,6 @@ test("BLOCK_TYPES lists all six block types", () => {
   expect(BLOCK_TYPES).toEqual([
     "userPrompt", "assistant", "bash", "edit", "read", "bare",
   ]);
-});
-
-test("defaultSettings returns normal permission mode", () => {
-  expect(defaultSettings().permissionMode).toBe("normal");
 });
 
 test("newWindow is an empty window with normal mode", () => {

@@ -1,19 +1,21 @@
 import { useRef } from "react";
-import { useSession } from "./state/useSession";
+import { useDoc } from "./state/useDoc";
 import { EditorPane } from "./editor/EditorPane";
 import { PreviewPane } from "./preview/PreviewPane";
 import { exportPng } from "./export/exportPng";
 import "./app.css";
 
 export default function App() {
-  const { session, add, update, remove, move, setSettings } = useSession();
+  const { doc, addBlock, updateBlock, removeBlock, moveBlock, updateWindow, updateFrame, setActiveWindow } = useDoc();
   const captureRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="ccsg-app">
       <EditorPane
-        session={session} add={add} update={update}
-        remove={remove} move={move} setSettings={setSettings}
+        doc={doc}
+        addBlock={addBlock} updateBlock={updateBlock} removeBlock={removeBlock}
+        moveBlock={moveBlock} updateWindow={updateWindow} updateFrame={updateFrame}
+        setActiveWindow={setActiveWindow}
       />
       <div className="ccsg-preview-wrap" style={{ position: "relative", overflow: "auto" }}>
         <button
@@ -22,7 +24,7 @@ export default function App() {
         >
           Export PNG
         </button>
-        <PreviewPane session={session} captureRef={captureRef} />
+        <PreviewPane doc={doc} captureRef={captureRef} />
       </div>
     </div>
   );

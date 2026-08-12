@@ -23,3 +23,9 @@ body { margin: 0; background: #0f0f0f; color: #e7e5e4;
 .ccsg-export-btn { position: fixed; top: 16px; right: 16px; z-index: 10;
   background: #d97757; color: #1c1917; border: none; border-radius: 8px;
   padding: 10px 16px; font-weight: 700; cursor: pointer; }
+.ccsg-tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+.ccsg-tabs button {
+  flex: 1; background: #171717; color: #a3a3a3; border: 1px solid #333;
+  border-radius: 6px; padding: 6px 10px; cursor: pointer;
+}
+.ccsg-tabs button.active { background: #262626; color: #e7e5e4; border-color: #d97757; }

@@ -1,11 +1,11 @@
-import { Session } from "../state/types";
+import { TerminalWindow } from "../state/types";
 import { permissionLabel, permissionColor } from "./theme";
 import { BlockView } from "./blocks/BlockView";
 import "./terminal.css";
 
-export function Terminal({ session }: { session: Session }) {
-  const { blocks, settings } = session;
-  const label = permissionLabel(settings.permissionMode);
+export function Terminal({ win }: { win: TerminalWindow }) {
+  const { blocks, permissionMode, cwd, model } = win;
+  const label = permissionLabel(permissionMode);
   return (
     <div className="ccsg-terminal">
       <div className="ccsg-blocks">
@@ -16,13 +16,10 @@ export function Terminal({ session }: { session: Session }) {
       </div>
       <div
         className="ccsg-statusbar"
-        style={{
-          display: "flex", justifyContent: "space-between",
-          marginTop: 14, color: "#78716c", fontSize: 12,
-        }}
+        style={{ display: "flex", justifyContent: "space-between", marginTop: 14, color: "#78716c", fontSize: 12 }}
       >
-        <span style={{ color: permissionColor(settings.permissionMode) }}>{label}</span>
-        <span>{settings.cwd} · {settings.model}</span>
+        <span style={{ color: permissionColor(permissionMode) }}>{label}</span>
+        <span>{cwd} · {model}</span>
       </div>
     </div>
   );
