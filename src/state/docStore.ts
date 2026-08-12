@@ -3,7 +3,7 @@ import {
   newBlock, newWindow, defaultFrame,
 } from "./types";
 
-export const STORAGE_KEY = "ccsg.doc.v2";
+export const STORAGE_KEY = "ccsg.doc.v3";
 
 export function emptyDoc(): Doc {
   return { windows: [newWindow(), newWindow()], frame: defaultFrame(), activeWindow: 0 };
@@ -78,7 +78,7 @@ export function loadDoc(): Doc {
 
 export function seedDoc(): Doc {
   const w0: TerminalWindow = {
-    permissionMode: "acceptEdits", cwd: "~/project", model: "opus-4-8",
+    agent: "claude-code", permissionMode: "acceptEdits", cwd: "~/project", model: "opus-4-8",
     blocks: [
       { id: "a1", type: "userPrompt", text: "Add a dark mode toggle to the navbar" },
       { id: "a2", type: "assistant", markdown: "I'll add a **theme toggle**:\n\n- a `useTheme` hook\n- a button in the navbar" },
@@ -89,9 +89,9 @@ export function seedDoc(): Doc {
     ],
   };
   const w1: TerminalWindow = {
-    permissionMode: "plan", cwd: "~/project", model: "opus-4-8",
+    agent: "gemini", permissionMode: "plan", cwd: "~/project", model: "gemini-2.5-pro",
     blocks: [
-      { id: "b1", type: "userPrompt", text: "Same, but plan it first before editing" },
+      { id: "b1", type: "userPrompt", text: "Add a dark mode toggle to the navbar" },
       { id: "b2", type: "assistant", markdown: "Here's the **plan**:\n\n1. Read the navbar\n2. Add the hook\n3. Wire the button" },
       { id: "b3", type: "read", filepath: "src/Navbar.tsx", summary: "Read 48 lines" },
     ],

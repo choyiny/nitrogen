@@ -48,6 +48,8 @@ test("seedDoc has two windows and split-h layout", () => {
   expect(d.windows[0].blocks.length).toBeGreaterThan(0);
   expect(d.windows[1].blocks.length).toBeGreaterThan(0);
   expect(d.frame.layout).toBe("split-h");
+  expect(d.windows[0].agent).toBe("claude-code");
+  expect(d.windows[1].agent).toBe("gemini");
 });
 
 test("save then load round-trips", () => {

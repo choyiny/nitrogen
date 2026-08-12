@@ -1,4 +1,5 @@
 export type PermissionMode = "normal" | "acceptEdits" | "plan" | "bypassPermissions";
+export type Agent = "claude-code" | "codex" | "gemini";
 export type BackdropId =
   | "transparent" | "slate" | "coral" | "indigo" | "black";
 export type AspectId =
@@ -38,6 +39,7 @@ export function newBlock(type: BlockType, id: string): Block {
 
 export interface TerminalWindow {
   blocks: Block[];
+  agent: Agent;
   permissionMode: PermissionMode;
   cwd: string;
   model: string;
@@ -59,7 +61,7 @@ export interface Doc {
 }
 
 export function newWindow(): TerminalWindow {
-  return { blocks: [], permissionMode: "normal", cwd: "~/project", model: "opus-4-8" };
+  return { blocks: [], agent: "claude-code", permissionMode: "normal", cwd: "~/project", model: "opus-4-8" };
 }
 
 export function defaultFrame(): FrameSettings {
