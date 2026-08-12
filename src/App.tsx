@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useDoc } from "./state/useDoc";
+import { Header } from "./Header";
 import { EditorPane } from "./editor/EditorPane";
 import { PreviewPane } from "./preview/PreviewPane";
 import { exportPng } from "./export/exportPng";
@@ -11,20 +12,17 @@ export default function App() {
 
   return (
     <div className="ccsg-app">
-      <EditorPane
-        doc={doc}
-        addBlock={addBlock} updateBlock={updateBlock} removeBlock={removeBlock}
-        moveBlock={moveBlock} updateWindow={updateWindow} updateFrame={updateFrame}
-        setActiveWindow={setActiveWindow}
-      />
-      <div className="ccsg-preview-wrap" style={{ position: "relative", overflow: "auto" }}>
-        <button
-          className="ccsg-export-btn"
-          onClick={() => captureRef.current && exportPng(captureRef.current)}
-        >
-          Export PNG
-        </button>
-        <PreviewPane doc={doc} captureRef={captureRef} />
+      <Header onExport={() => captureRef.current && exportPng(captureRef.current)} />
+      <div className="ccsg-body">
+        <EditorPane
+          doc={doc}
+          addBlock={addBlock} updateBlock={updateBlock} removeBlock={removeBlock}
+          moveBlock={moveBlock} updateWindow={updateWindow} updateFrame={updateFrame}
+          setActiveWindow={setActiveWindow}
+        />
+        <div className="ccsg-preview-wrap" style={{ position: "relative", overflow: "auto" }}>
+          <PreviewPane doc={doc} captureRef={captureRef} />
+        </div>
       </div>
     </div>
   );
