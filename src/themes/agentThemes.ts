@@ -5,7 +5,6 @@ export interface ThemeColors {
   bg: string; text: string; dim: string; accent: string;
   promptBorder: string; add: string; remove: string; context: string; codeBg: string;
 }
-export interface BannerSpec { text: string; gradient: string[]; }
 export interface StatusBar { leftText: string; leftColor: string; rightText: string; }
 
 export interface AgentTheme {
@@ -13,7 +12,6 @@ export interface AgentTheme {
   name: string;
   defaultModel: string;
   colors: ThemeColors;
-  banner?: BannerSpec;
   prompt: { kind: "box" | "plain"; glyph: string };
   assistantMarker: string;
   connector: string;
@@ -62,7 +60,6 @@ export const THEMES: Record<Agent, AgentTheme> = {
     id: "gemini", name: "Gemini CLI", defaultModel: "gemini-2.5-pro",
     colors: { bg: "#0b0e14", text: "#e6e6e6", dim: "#8b949e", accent: "#4796E3",
       promptBorder: "#30363d", add: DIFF.add, remove: DIFF.remove, context: "#8b949e", codeBg: "#161b22" },
-    banner: { text: "GEMINI", gradient: ["#4796E3", "#9168E0", "#E0508A"] },
     prompt: { kind: "box", glyph: ">" },
     assistantMarker: "✦", connector: "⎿",
     toolLabels: { bash: "Shell", edit: "Edit", read: "ReadFile" },

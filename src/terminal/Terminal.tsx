@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import { TerminalWindow } from "../state/types";
 import { themeFor } from "../themes/agentThemes";
 import { ThemeContext } from "../themes/ThemeContext";
-import { Banner } from "../themes/Banner";
 import { BlockView } from "./blocks/BlockView";
 import "./terminal.css";
 
@@ -17,7 +16,6 @@ export function Terminal({ win }: { win: TerminalWindow }) {
   return (
     <ThemeContext.Provider value={theme}>
       <div className="ccsg-terminal" style={vars}>
-        {theme.banner && <Banner spec={theme.banner} />}
         <div className="ccsg-blocks">
           {blocks.length === 0 && <div style={{ color: c.dim }}>Add a block to get started…</div>}
           {blocks.map((b) => <BlockView key={b.id} block={b} />)}
