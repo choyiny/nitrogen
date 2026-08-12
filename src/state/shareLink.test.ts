@@ -1,5 +1,6 @@
 import { encodeDoc, decodeDoc, readDocFromHash, writeDocToHash } from "./shareLink";
 import { emptyDoc, seedDoc, addBlock } from "./docStore";
+import { newWindow, defaultFrame } from "./types";
 
 test("encode → decode round-trips a doc", () => {
   const doc = addBlock(seedDoc(), 0, "bash", "z1");
@@ -28,4 +29,11 @@ test("writeDocToHash then readDocFromHash round-trips via location.hash", () => 
 test("readDocFromHash returns null with no hash", () => {
   location.hash = "";
   expect(readDocFromHash()).toBeNull();
+});
+
+test("round-trips docs with unicode (emoji, accented letters)", () => {
+  const w = newWindow();
+  w.blocks.push({ id: "u1", type: "assistant", markdown: "Résumé 🚀 café — 日本語" });
+  const doc = { windows: [w, newWindow()], frame: defaultFrame(), activeWindow: 0 as const } as const;
+  expect(decodeDoc(encodeDoc(doc as any))).toEqual(doc);
 });

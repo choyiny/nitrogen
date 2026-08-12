@@ -38,8 +38,7 @@ export function encodeDoc(doc: Doc): string {
 export function decodeDoc(s: string): Doc | null {
   try {
     const compressed = fromBase64Url(s);
-    const decompressed = inflate(compressed) as Uint8Array;
-    const json = u8ToBinary(decompressed);
+    const json = new TextDecoder().decode(inflate(compressed));
     const parsed = JSON.parse(json);
     return isDoc(parsed) ? parsed : null;
   } catch {
