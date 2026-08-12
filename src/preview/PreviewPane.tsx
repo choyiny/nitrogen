@@ -3,7 +3,7 @@ import type { Session } from "../state/types";
 import { Terminal } from "../terminal/Terminal";
 import { backgroundFor, aspectRatioFor } from "./backdrops";
 
-type Props = { session: Session; captureRef: RefObject<HTMLDivElement> };
+type Props = { session: Session; captureRef: RefObject<HTMLDivElement | null> };
 
 export function PreviewPane({ session, captureRef }: Props) {
   const { settings } = session;
