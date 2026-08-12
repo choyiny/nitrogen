@@ -6,6 +6,8 @@
 
 ### Turn your coding-agent sessions into share-worthy images
 
+**🌐 Live at [nitrogen.cite-met.dev](https://nitrogen.cite-met.dev)**
+
 **nitrogen** is [carbon.now.sh](https://carbon.now.sh) for AI coding — compose a faux
 coding-agent terminal session from typed blocks and export a crisp, social-ready PNG. Prompt
 boxes, `●` responses, tool calls, diffs, and the status bar — rendered in the style of
@@ -46,6 +48,10 @@ A single Codex CLI window on the slate backdrop:
 ![Codex CLI window on slate backdrop](assets/example-codex.png)
 
 ## 🚀 Getting started
+
+Just want to use it? It's hosted at **[nitrogen.cite-met.dev](https://nitrogen.cite-met.dev)**.
+
+To run it locally:
 
 ```bash
 npm install
