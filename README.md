@@ -89,6 +89,20 @@ src/
   Header.tsx  # the nitrogen brand bar
 ```
 
+## 🔗 Generate links from a coding agent
+
+`skills/nitrogen-link/` is an [agent skill](https://github.com/vercel-labs/skills) that turns
+a coding-agent session (or a description of one) into a ready-to-edit nitrogen link. The agent
+drafts a concise summary as a `Doc`, and a bundled script (`encode.py`) compresses it into a
+`https://nitrogen.cite-met.dev/#s=…` link you open and polish in the UI.
+
+```bash
+npx skills add choyiny/nitrogen@nitrogen-link
+```
+
+It's symlinked into `.claude/skills/` for local use in this repo. Trigger it with something like
+"make a nitrogen link from this Claude Code session".
+
 ## 🛠️ Built with
 
 - [React](https://react.dev) + [TypeScript](https://www.typescriptlang.org) (strict)
