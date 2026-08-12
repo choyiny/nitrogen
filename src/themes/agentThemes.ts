@@ -74,5 +74,5 @@ export const THEMES: Record<Agent, AgentTheme> = {
 };
 
 export function themeFor(agent: Agent): AgentTheme {
-  return THEMES[agent];
+  return THEMES[agent] ?? THEMES["claude-code"];
 }
