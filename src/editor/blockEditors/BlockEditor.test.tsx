@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BlockEditor } from "./BlockEditor";
-import { parseDiff, formatDiff } from "./DiffEditor";
+import { parseDiff, formatDiff } from "./diff";
 import type { Block } from "../../state/types";
 
 test("parseDiff classifies lines by prefix", () => {

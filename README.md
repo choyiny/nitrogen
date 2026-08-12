@@ -6,6 +6,8 @@
 
 ### Turn your coding-agent sessions into share-worthy images
 
+[![CI](https://github.com/choyiny/nitrogen/actions/workflows/ci.yml/badge.svg)](https://github.com/choyiny/nitrogen/actions/workflows/ci.yml)
+
 **🌐 Live at [nitrogen.cite-met.dev](https://nitrogen.cite-met.dev)**
 
 **nitrogen** is [carbon.now.sh](https://carbon.now.sh) for AI coding — compose a faux
