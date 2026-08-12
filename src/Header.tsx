@@ -10,7 +10,7 @@ export function Header({ onExport }: Props) {
         </div>
         <div className="ccsg-brand-text">
           <span className="ccsg-wordmark">nitrogen</span>
-          <span className="ccsg-tagline">claude code snippets</span>
+          <span className="ccsg-tagline">coding agent snippets</span>
         </div>
       </div>
       <button className="ccsg-export-btn" onClick={onExport}>
