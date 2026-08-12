@@ -2,8 +2,8 @@
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 14px;
   line-height: 1.55;
-  background: #1c1917;
-  color: #e7e5e4;
+  background: var(--ccsg-bg, #1c1917);
+  color: var(--ccsg-text, #e7e5e4);
   padding: 20px 22px 8px;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
@@ -19,7 +19,7 @@
 .ccsg-terminal .ccsg-md li { margin: 2px 0; }
 .ccsg-terminal .ccsg-md li::marker { color: #78716c; }
 .ccsg-terminal .ccsg-md code {
-  background: #292524; padding: 1px 5px; border-radius: 4px; font-size: 0.92em;
+  background: var(--ccsg-code-bg, #292524); padding: 1px 5px; border-radius: 4px; font-size: 0.92em;
 }
 .ccsg-terminal .ccsg-md pre {
   background: #0c0a09; padding: 10px 12px; border-radius: 8px;

@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { BlockView } from "./BlockView";
 import type { Block } from "../../state/types";
+import { ThemeContext } from "../../themes/ThemeContext";
+import { themeFor } from "../../themes/agentThemes";
 
 test("userPrompt renders the prompt box with text", () => {
   const b: Block = { id: "1", type: "userPrompt", text: "fix the bug" };
@@ -39,4 +41,17 @@ test("read renders filepath and summary", () => {
   render(<BlockView block={b} />);
   expect(screen.getByText(/a\.ts/)).toBeInTheDocument();
   expect(screen.getByText(/Read 42 lines/)).toBeInTheDocument();
+});
+
+test("gemini theme renders ✦ marker and Shell/ReadFile tool labels", () => {
+  const bash: Block = { id: "1", type: "bash", command: "ls", output: "" };
+  const { rerender } = render(
+    <ThemeContext.Provider value={themeFor("gemini")}><BlockView block={bash} /></ThemeContext.Provider>
+  );
+  expect(screen.getByText("Shell")).toBeInTheDocument();
+  expect(screen.getByText("✦")).toBeInTheDocument();
+
+  const read: Block = { id: "2", type: "read", filepath: "a.ts", summary: "Read 10 lines" };
+  rerender(<ThemeContext.Provider value={themeFor("gemini")}><BlockView block={read} /></ThemeContext.Provider>);
+  expect(screen.getByText("ReadFile")).toBeInTheDocument();
 });
