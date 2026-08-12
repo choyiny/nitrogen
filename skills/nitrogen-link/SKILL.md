@@ -26,7 +26,7 @@ exporting.
 ## What you do vs. what the script does
 
 - **You** (Claude) read the user's content and write a nitrogen **Doc** as JSON — a
-  concise, tasteful *summary*, not a copy-paste of the whole conversation.
+  concise, tasteful _summary_, not a copy-paste of the whole conversation.
 - **The bundled `encode.py`** turns that JSON into the final `https://nitrogen.cite-met.dev/#s=...`
   link. Never hand-write the encoded part of the URL — it is compressed binary; only the
   script produces a valid one.
@@ -34,7 +34,7 @@ exporting.
 ## The most important idea: summarize, don't transcribe
 
 nitrogen cards are for sharing, so they work like a **tl;dr of a session**, not a full
-log. Real prompts and responses are long; a good card shows the *shape* of what happened:
+log. Real prompts and responses are long; a good card shows the _shape_ of what happened:
 
 - The user's ask, tightened to one or two sentences.
 - The agent's answer, distilled to a few lines of markdown (a short intro + a bullet or
@@ -77,22 +77,22 @@ omit anything and the script fills a sensible default; set what you care about.
 ```jsonc
 {
   "frame": {
-    "backdrop": "coral",   // transparent | slate | coral | indigo | black
-    "padding": 48,         // 0–160, space around the terminal(s)
-    "aspect": "auto",      // auto | 16:9 | square | twitter | linkedin
-    "layout": "single"     // single | split-h (left/right) | split-v (top/bottom)
+    "backdrop": "coral", // transparent | slate | coral | indigo | black
+    "padding": 48, // 0–160, space around the terminal(s)
+    "aspect": "auto", // auto | 16:9 | square | twitter | linkedin
+    "layout": "single", // single | split-h (left/right) | split-v (top/bottom)
   },
-  "activeWindow": 0,        // 0 or 1 — which window the editor opens on
+  "activeWindow": 0, // 0 or 1 — which window the editor opens on
   "windows": [
     {
-      "agent": "claude-code",       // claude-code | codex | gemini  (drives the whole theme)
+      "agent": "claude-code", // claude-code | codex | gemini  (drives the whole theme)
       "permissionMode": "acceptEdits", // normal | acceptEdits | plan | bypassPermissions
       "cwd": "~/project",
-      "model": "opus-4-8",          // omit to use the agent's default
-      "blocks": [ /* see block types */ ]
-    }
+      "model": "opus-4-8", // omit to use the agent's default
+      "blocks": [/* see block types */],
+    },
     // a second window is added automatically for "single"; provide it yourself for a split
-  ]
+  ],
 }
 ```
 
@@ -102,11 +102,11 @@ Pick the `agent` that matches whose session it is; it sets the colors, prompt st
 marker, tool-label wording, and status bar. Default model per agent (used if you omit
 `model`):
 
-| agent          | looks like                                   | default model     |
-|----------------|----------------------------------------------|-------------------|
-| `claude-code`  | coral `●`, `Bash`/`Update`/`Read` labels     | `opus-4-8`        |
-| `codex`        | teal `•`, plain `›` prompt, `apply_patch`    | `gpt-5-codex`     |
-| `gemini`       | blue `✦`, `Shell`/`Edit`/`ReadFile` labels   | `gemini-2.5-pro`  |
+| agent         | looks like                                 | default model    |
+| ------------- | ------------------------------------------ | ---------------- |
+| `claude-code` | coral `●`, `Bash`/`Update`/`Read` labels   | `opus-4-8`       |
+| `codex`       | teal `•`, plain `›` prompt, `apply_patch`  | `gpt-5-codex`    |
+| `gemini`      | blue `✦`, `Shell`/`Edit`/`ReadFile` labels | `gemini-2.5-pro` |
 
 `permissionMode` renders as the status-bar mode (Claude shows `accept edits`/`plan
 mode`/`bypass permissions`; other agents show their own wording).
@@ -115,14 +115,14 @@ mode`/`bypass permissions`; other agents show their own wording).
 
 Blocks are the lines in the terminal, in order. Each needs a `type`; `id` is added for you.
 
-| type         | fields                                                        | renders as                          |
-|--------------|--------------------------------------------------------------|-------------------------------------|
-| `userPrompt` | `text`                                                       | the `>` input box with the prompt   |
-| `assistant`  | `markdown`                                                   | `●` + rendered markdown             |
-| `bash`       | `command`, `output`                                          | `● Bash(command)` then `⎿ output`   |
-| `edit`       | `filepath`, `lines: [{ kind, text }]`                        | `● Update(filepath)` + colored diff |
-| `read`       | `filepath`, `summary`                                        | `● Read(filepath)` then `⎿ summary` |
-| `bare`       | `text`                                                       | a dim standalone line               |
+| type         | fields                                | renders as                          |
+| ------------ | ------------------------------------- | ----------------------------------- |
+| `userPrompt` | `text`                                | the `>` input box with the prompt   |
+| `assistant`  | `markdown`                            | `●` + rendered markdown             |
+| `bash`       | `command`, `output`                   | `● Bash(command)` then `⎿ output`   |
+| `edit`       | `filepath`, `lines: [{ kind, text }]` | `● Update(filepath)` + colored diff |
+| `read`       | `filepath`, `summary`                 | `● Read(filepath)` then `⎿ summary` |
+| `bare`       | `text`                                | a dim standalone line               |
 
 For `edit`, each line's `kind` is `add` (green `+`), `remove` (red `-`), or `context`
 (plain). Keep diffs to the few lines that matter.

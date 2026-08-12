@@ -1,0 +1,8 @@
+dist
+coverage
+package-lock.json
+public
+assets
+*.png
+*.jpg
+*.svg

@@ -7,6 +7,7 @@
 ### Turn your coding-agent sessions into share-worthy images
 
 [![CI](https://github.com/choyiny/nitrogen/actions/workflows/ci.yml/badge.svg)](https://github.com/choyiny/nitrogen/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 **🌐 Live at [nitrogen.cite-met.dev](https://nitrogen.cite-met.dev)**
 
@@ -32,7 +33,7 @@ boxes, `●` responses, tool calls, diffs, and the status bar — rendered in th
 - **Structured block editor** — build a session from typed blocks: user prompt, assistant
   (markdown), and Bash / Edit (diff) / Read tool calls. Add, reorder, and delete.
 - **Permission-mode status bar** — `normal`, `accept edits`, `plan mode`, and `bypass
-  permissions` (red), rendered per agent (Codex shows its approval terms, etc.).
+permissions` (red), rendered per agent (Codex shows its approval terms, etc.).
 - **Beautiful framing** — gradient / solid / transparent backdrops, adjustable padding, and
   aspect presets (auto, 16:9, square, X/Twitter, LinkedIn).
 - **2× PNG export** — one click renders the framed layout to a high-resolution PNG with the

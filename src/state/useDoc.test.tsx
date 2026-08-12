@@ -3,7 +3,9 @@ import { useDoc } from "./useDoc";
 import { encodeDoc } from "./shareLink";
 import { emptyDoc, addBlock } from "./docStore";
 
-afterEach(() => { window.location.hash = ""; });
+afterEach(() => {
+  window.location.hash = "";
+});
 
 test("initializes from the URL hash when present", () => {
   const shared = addBlock(emptyDoc(), 1, "bash", "x1");

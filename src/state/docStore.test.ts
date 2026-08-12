@@ -1,6 +1,16 @@
 import {
-  emptyDoc, seedDoc, addBlock, updateBlock, removeBlock, moveBlock,
-  updateWindow, updateFrame, setActiveWindow, loadDoc, saveDoc, STORAGE_KEY,
+  emptyDoc,
+  seedDoc,
+  addBlock,
+  updateBlock,
+  removeBlock,
+  moveBlock,
+  updateWindow,
+  updateFrame,
+  setActiveWindow,
+  loadDoc,
+  saveDoc,
+  STORAGE_KEY,
 } from "./docStore";
 
 test("addBlock targets the given window only", () => {

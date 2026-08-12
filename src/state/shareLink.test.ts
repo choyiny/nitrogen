@@ -34,6 +34,10 @@ test("readDocFromHash returns null with no hash", () => {
 test("round-trips docs with unicode (emoji, accented letters)", () => {
   const w = newWindow();
   w.blocks.push({ id: "u1", type: "assistant", markdown: "Résumé 🚀 café — 日本語" });
-  const doc = { windows: [w, newWindow()], frame: defaultFrame(), activeWindow: 0 as const } as const;
+  const doc = {
+    windows: [w, newWindow()],
+    frame: defaultFrame(),
+    activeWindow: 0 as const,
+  } as const;
   expect(decodeDoc(encodeDoc(doc as any))).toEqual(doc);
 });

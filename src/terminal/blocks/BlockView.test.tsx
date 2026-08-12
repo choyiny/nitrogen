@@ -25,7 +25,9 @@ test("bash renders command and output", () => {
 
 test("edit renders diff lines with kind markers", () => {
   const b: Block = {
-    id: "1", type: "edit", filepath: "a.ts",
+    id: "1",
+    type: "edit",
+    filepath: "a.ts",
     lines: [
       { kind: "add", text: "const x = 1" },
       { kind: "remove", text: "const x = 0" },
@@ -46,12 +48,18 @@ test("read renders filepath and summary", () => {
 test("gemini theme renders ✦ marker and Shell/ReadFile tool labels", () => {
   const bash: Block = { id: "1", type: "bash", command: "ls", output: "" };
   const { rerender } = render(
-    <ThemeContext.Provider value={themeFor("gemini")}><BlockView block={bash} /></ThemeContext.Provider>
+    <ThemeContext.Provider value={themeFor("gemini")}>
+      <BlockView block={bash} />
+    </ThemeContext.Provider>,
   );
   expect(screen.getByText("Shell")).toBeInTheDocument();
   expect(screen.getByText("✦")).toBeInTheDocument();
 
   const read: Block = { id: "2", type: "read", filepath: "a.ts", summary: "Read 10 lines" };
-  rerender(<ThemeContext.Provider value={themeFor("gemini")}><BlockView block={read} /></ThemeContext.Provider>);
+  rerender(
+    <ThemeContext.Provider value={themeFor("gemini")}>
+      <BlockView block={read} />
+    </ThemeContext.Provider>,
+  );
   expect(screen.getByText("ReadFile")).toBeInTheDocument();
 });

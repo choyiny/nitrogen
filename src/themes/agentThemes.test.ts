@@ -21,8 +21,16 @@ test("claude tool label is Bash, gemini is Shell", () => {
 });
 
 test("claude status uses the permission label; gemini shows context", () => {
-  const claude = themeFor("claude-code").statusBar({ permissionMode: "acceptEdits", cwd: "~/p", model: "opus-4-8" });
+  const claude = themeFor("claude-code").statusBar({
+    permissionMode: "acceptEdits",
+    cwd: "~/p",
+    model: "opus-4-8",
+  });
   expect(claude.leftText).toBe("⏵⏵ accept edits on");
-  const gem = themeFor("gemini").statusBar({ permissionMode: "plan", cwd: "~/p", model: "gemini-2.5-pro" });
+  const gem = themeFor("gemini").statusBar({
+    permissionMode: "plan",
+    cwd: "~/p",
+    model: "gemini-2.5-pro",
+  });
   expect(gem.rightText).toContain("context left");
 });

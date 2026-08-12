@@ -3,7 +3,15 @@ import { EditorPane } from "./EditorPane";
 import { emptyDoc, addBlock, updateFrame } from "../state/docStore";
 
 function noop() {}
-const actions = { addBlock: noop, updateBlock: noop, removeBlock: noop, moveBlock: noop, updateWindow: noop, updateFrame: noop, setActiveWindow: noop };
+const actions = {
+  addBlock: noop,
+  updateBlock: noop,
+  removeBlock: noop,
+  moveBlock: noop,
+  updateWindow: noop,
+  updateFrame: noop,
+  setActiveWindow: noop,
+};
 
 test("add button calls addBlock with active window and type", () => {
   const addBlockFn = vi.fn();

@@ -7,7 +7,16 @@ import { exportPng } from "./export/exportPng";
 import "./app.css";
 
 export default function App() {
-  const { doc, addBlock, updateBlock, removeBlock, moveBlock, updateWindow, updateFrame, setActiveWindow } = useDoc();
+  const {
+    doc,
+    addBlock,
+    updateBlock,
+    removeBlock,
+    moveBlock,
+    updateWindow,
+    updateFrame,
+    setActiveWindow,
+  } = useDoc();
   const captureRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -16,8 +25,12 @@ export default function App() {
       <div className="ccsg-body">
         <EditorPane
           doc={doc}
-          addBlock={addBlock} updateBlock={updateBlock} removeBlock={removeBlock}
-          moveBlock={moveBlock} updateWindow={updateWindow} updateFrame={updateFrame}
+          addBlock={addBlock}
+          updateBlock={updateBlock}
+          removeBlock={removeBlock}
+          moveBlock={moveBlock}
+          updateWindow={updateWindow}
+          updateFrame={updateFrame}
           setActiveWindow={setActiveWindow}
         />
         <div className="ccsg-preview-wrap" style={{ position: "relative", overflow: "auto" }}>

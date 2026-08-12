@@ -11,15 +11,24 @@ test("newBlock creates an edit block with empty diff lines", () => {
 });
 
 test("BLOCK_TYPES lists all six block types", () => {
-  expect(BLOCK_TYPES).toEqual([
-    "userPrompt", "assistant", "bash", "edit", "read", "bare",
-  ]);
+  expect(BLOCK_TYPES).toEqual(["userPrompt", "assistant", "bash", "edit", "read", "bare"]);
 });
 
 test("newWindow is an empty window with normal mode", () => {
-  expect(newWindow()).toEqual({ blocks: [], agent: "claude-code", permissionMode: "normal", cwd: "~/project", model: "opus-4-8" });
+  expect(newWindow()).toEqual({
+    blocks: [],
+    agent: "claude-code",
+    permissionMode: "normal",
+    cwd: "~/project",
+    model: "opus-4-8",
+  });
 });
 
 test("defaultFrame is coral/auto/single", () => {
-  expect(defaultFrame()).toEqual({ backdrop: "coral", padding: 48, aspect: "auto", layout: "single" });
+  expect(defaultFrame()).toEqual({
+    backdrop: "coral",
+    padding: 48,
+    aspect: "auto",
+    layout: "single",
+  });
 });

@@ -19,20 +19,34 @@ export function PreviewPane({ doc, captureRef }: Props) {
           background: backgroundFor(frame.backdrop),
           padding: frame.padding,
           aspectRatio: aspect,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          width: "100%", boxSizing: "border-box",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          boxSizing: "border-box",
         }}
       >
         <div
           data-testid="window-container"
           style={{
-            display: "flex", flexDirection: direction, gap: 24,
-            width: "100%", justifyContent: "center",
+            display: "flex",
+            flexDirection: direction,
+            gap: 24,
+            width: "100%",
+            justifyContent: "center",
             alignItems: isSplit ? "stretch" : "center",
           }}
         >
           {shown.map((w, i) => (
-            <div key={i} style={{ flex: isSplit ? 1 : "0 1 720px", minWidth: 0, maxWidth: isSplit ? undefined : 720, width: "100%" }}>
+            <div
+              key={i}
+              style={{
+                flex: isSplit ? 1 : "0 1 720px",
+                minWidth: 0,
+                maxWidth: isSplit ? undefined : 720,
+                width: "100%",
+              }}
+            >
               <Terminal win={w} />
             </div>
           ))}

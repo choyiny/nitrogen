@@ -16,7 +16,16 @@ type Props = {
 };
 
 export function EditorPane(props: Props) {
-  const { doc, addBlock, updateBlock, removeBlock, moveBlock, updateWindow, updateFrame, setActiveWindow } = props;
+  const {
+    doc,
+    addBlock,
+    updateBlock,
+    removeBlock,
+    moveBlock,
+    updateWindow,
+    updateFrame,
+    setActiveWindow,
+  } = props;
   const isSplit = doc.frame.layout !== "single";
   const active: 0 | 1 = isSplit ? doc.activeWindow : 0;
   const win = doc.windows[active];
@@ -40,7 +49,9 @@ export function EditorPane(props: Props) {
       <WindowSettings win={win} onChange={(patch) => updateWindow(active, patch)} />
       <div className="ccsg-add-row">
         {BLOCK_TYPES.map((t) => (
-          <button key={t} onClick={() => addBlock(active, t)}>{t}</button>
+          <button key={t} onClick={() => addBlock(active, t)}>
+            {t}
+          </button>
         ))}
       </div>
       <div className="ccsg-block-list">
@@ -49,9 +60,15 @@ export function EditorPane(props: Props) {
             <div className="ccsg-block-head">
               <span>{b.type}</span>
               <span>
-                <button aria-label="↑" onClick={() => moveBlock(active, b.id, "up")}>↑</button>
-                <button aria-label="↓" onClick={() => moveBlock(active, b.id, "down")}>↓</button>
-                <button aria-label="✕" onClick={() => removeBlock(active, b.id)}>✕</button>
+                <button aria-label="↑" onClick={() => moveBlock(active, b.id, "up")}>
+                  ↑
+                </button>
+                <button aria-label="↓" onClick={() => moveBlock(active, b.id, "down")}>
+                  ↓
+                </button>
+                <button aria-label="✕" onClick={() => removeBlock(active, b.id)}>
+                  ✕
+                </button>
               </span>
             </div>
             <BlockEditor block={b} onChange={(patch) => updateBlock(active, b.id, patch)} />

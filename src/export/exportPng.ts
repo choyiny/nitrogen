@@ -7,10 +7,7 @@ export function triggerDownload(dataUrl: string, filename: string): void {
   a.click();
 }
 
-export async function exportPng(
-  node: HTMLElement,
-  filename = "nitrogen.png",
-): Promise<void> {
+export async function exportPng(node: HTMLElement, filename = "nitrogen.png"): Promise<void> {
   const dataUrl = await toPng(node, { pixelRatio: 2, cacheBust: true });
   triggerDownload(dataUrl, filename);
 }

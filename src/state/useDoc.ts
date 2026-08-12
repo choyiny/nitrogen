@@ -1,8 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Block, BlockType, FrameSettings, TerminalWindow } from "./types";
 import {
-  addBlock, loadDoc, moveBlock, removeBlock, saveDoc, setActiveWindow,
-  updateBlock, updateFrame, updateWindow,
+  addBlock,
+  loadDoc,
+  moveBlock,
+  removeBlock,
+  saveDoc,
+  setActiveWindow,
+  updateBlock,
+  updateFrame,
+  updateWindow,
 } from "./docStore";
 import { readDocFromHash, writeDocToHash } from "./shareLink";
 
@@ -17,19 +24,37 @@ export function useDoc() {
   // once the user edits, the hash tracks the session.
   const first = useRef(true);
   useEffect(() => {
-    if (first.current) { first.current = false; return; }
+    if (first.current) {
+      first.current = false;
+      return;
+    }
     const t = setTimeout(() => writeDocToHash(doc), 250);
     return () => clearTimeout(t);
   }, [doc]);
 
   return {
     doc,
-    addBlock: useCallback((w: 0 | 1, t: BlockType) => setDoc((d) => addBlock(d, w, t, genId())), []),
-    updateBlock: useCallback((w: 0 | 1, id: string, patch: Partial<Block>) => setDoc((d) => updateBlock(d, w, id, patch)), []),
+    addBlock: useCallback(
+      (w: 0 | 1, t: BlockType) => setDoc((d) => addBlock(d, w, t, genId())),
+      [],
+    ),
+    updateBlock: useCallback(
+      (w: 0 | 1, id: string, patch: Partial<Block>) => setDoc((d) => updateBlock(d, w, id, patch)),
+      [],
+    ),
     removeBlock: useCallback((w: 0 | 1, id: string) => setDoc((d) => removeBlock(d, w, id)), []),
-    moveBlock: useCallback((w: 0 | 1, id: string, dir: "up" | "down") => setDoc((d) => moveBlock(d, w, id, dir)), []),
-    updateWindow: useCallback((w: 0 | 1, patch: Partial<TerminalWindow>) => setDoc((d) => updateWindow(d, w, patch)), []),
-    updateFrame: useCallback((patch: Partial<FrameSettings>) => setDoc((d) => updateFrame(d, patch)), []),
+    moveBlock: useCallback(
+      (w: 0 | 1, id: string, dir: "up" | "down") => setDoc((d) => moveBlock(d, w, id, dir)),
+      [],
+    ),
+    updateWindow: useCallback(
+      (w: 0 | 1, patch: Partial<TerminalWindow>) => setDoc((d) => updateWindow(d, w, patch)),
+      [],
+    ),
+    updateFrame: useCallback(
+      (patch: Partial<FrameSettings>) => setDoc((d) => updateFrame(d, patch)),
+      [],
+    ),
     setActiveWindow: useCallback((w: 0 | 1) => setDoc((d) => setActiveWindow(d, w)), []),
   };
 }
