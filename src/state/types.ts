@@ -59,7 +59,7 @@ export interface Doc {
 }
 
 export function newWindow(): TerminalWindow {
-  return { blocks: [], permissionMode: "normal", cwd: "~/project", model: "claude-opus-4-8" };
+  return { blocks: [], permissionMode: "normal", cwd: "~/project", model: "opus-4-8" };
 }
 
 export function defaultFrame(): FrameSettings {

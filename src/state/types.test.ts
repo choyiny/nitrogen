@@ -17,7 +17,7 @@ test("BLOCK_TYPES lists all six block types", () => {
 });
 
 test("newWindow is an empty window with normal mode", () => {
-  expect(newWindow()).toEqual({ blocks: [], permissionMode: "normal", cwd: "~/project", model: "claude-opus-4-8" });
+  expect(newWindow()).toEqual({ blocks: [], permissionMode: "normal", cwd: "~/project", model: "opus-4-8" });
 });
 
 test("defaultFrame is coral/auto/single", () => {

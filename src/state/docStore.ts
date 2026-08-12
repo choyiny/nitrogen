@@ -78,7 +78,7 @@ export function loadDoc(): Doc {
 
 export function seedDoc(): Doc {
   const w0: TerminalWindow = {
-    permissionMode: "acceptEdits", cwd: "~/project", model: "claude-opus-4-8",
+    permissionMode: "acceptEdits", cwd: "~/project", model: "opus-4-8",
     blocks: [
       { id: "a1", type: "userPrompt", text: "Add a dark mode toggle to the navbar" },
       { id: "a2", type: "assistant", markdown: "I'll add a **theme toggle**:\n\n- a `useTheme` hook\n- a button in the navbar" },
@@ -89,7 +89,7 @@ export function seedDoc(): Doc {
     ],
   };
   const w1: TerminalWindow = {
-    permissionMode: "plan", cwd: "~/project", model: "claude-opus-4-8",
+    permissionMode: "plan", cwd: "~/project", model: "opus-4-8",
     blocks: [
       { id: "b1", type: "userPrompt", text: "Same, but plan it first before editing" },
       { id: "b2", type: "assistant", markdown: "Here's the **plan**:\n\n1. Read the navbar\n2. Add the hook\n3. Wire the button" },

@@ -14,9 +14,9 @@ export const THEME = {
 export function permissionLabel(mode: PermissionMode): string {
   switch (mode) {
     case "normal": return "";
-    case "acceptEdits": return "⏵⏵ accept edits on (shift+tab to cycle)";
-    case "plan": return "⏵ plan mode on (shift+tab to cycle)";
-    case "bypassPermissions": return "⏵⏵ bypass permissions on (shift+tab to cycle)";
+    case "acceptEdits": return "⏵⏵ accept edits on";
+    case "plan": return "⏵ plan mode on";
+    case "bypassPermissions": return "⏵⏵ bypass permissions on";
   }
 }
 
