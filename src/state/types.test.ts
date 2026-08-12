@@ -1,4 +1,4 @@
-import { newBlock, defaultSettings, BLOCK_TYPES } from "./types";
+import { newBlock, defaultSettings, BLOCK_TYPES, newWindow, defaultFrame } from "./types";
 
 test("newBlock creates a userPrompt with empty text", () => {
   const b = newBlock("userPrompt", "id1");
@@ -18,4 +18,12 @@ test("BLOCK_TYPES lists all six block types", () => {
 
 test("defaultSettings returns normal permission mode", () => {
   expect(defaultSettings().permissionMode).toBe("normal");
+});
+
+test("newWindow is an empty window with normal mode", () => {
+  expect(newWindow()).toEqual({ blocks: [], permissionMode: "normal", cwd: "~/project", model: "claude-opus-4-8" });
+});
+
+test("defaultFrame is coral/auto/single", () => {
+  expect(defaultFrame()).toEqual({ backdrop: "coral", padding: 48, aspect: "auto", layout: "single" });
 });

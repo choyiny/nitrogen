@@ -60,3 +60,33 @@ export function defaultSettings(): SessionSettings {
     aspect: "auto",
   };
 }
+
+export interface TerminalWindow {
+  blocks: Block[];
+  permissionMode: PermissionMode;
+  cwd: string;
+  model: string;
+}
+
+export type Layout = "single" | "split-h" | "split-v";
+
+export interface FrameSettings {
+  backdrop: BackdropId;
+  padding: number;
+  aspect: AspectId;
+  layout: Layout;
+}
+
+export interface Doc {
+  windows: [TerminalWindow, TerminalWindow];
+  frame: FrameSettings;
+  activeWindow: 0 | 1;
+}
+
+export function newWindow(): TerminalWindow {
+  return { blocks: [], permissionMode: "normal", cwd: "~/project", model: "claude-opus-4-8" };
+}
+
+export function defaultFrame(): FrameSettings {
+  return { backdrop: "coral", padding: 48, aspect: "auto", layout: "single" };
+}
