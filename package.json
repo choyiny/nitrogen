@@ -39,7 +39,7 @@
     "html-to-image": "^1.11.13",
     "marked": "^18.0.9",
     "pako": "^3.0.1",
-    "react": "^19.2.8",
+    "react": "^19.3.0",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "@testing-library/user-event": "^14.6.4",
     "@types/dompurify": "^3.2.0",
     "@types/pako": "^3.0.0",
-    "@types/react": "^19.2.18",
+    "@types/react": "^19.3.0",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
     "eslint": "^9.39.5",
